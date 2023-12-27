@@ -23,7 +23,7 @@
 /* Encrypt Data for Access The URL */
 const c_list_passPhraseList = ["U2FsdGVkX1/LmjxVaQFMSl5AY5Aysg0T+D3j6ajmtXUGPrlXdX0z/4BVtci1BqndjRXlxIv4ncdtiGVLRjHZCA==",
                                "U2FsdGVkX1+8bqSyy/y6opml2r9y0jGoBkQ/oe1v/JKzHE/Rq5VwdJho1RYg6Nc1JBDooJNDtKTnFZ2yLoGCdA==",
-                               "U2FsdGVkX1/OIYpn65ihH8nEjyBSfJnLEtseG/7TPeETaIg/WZmYHmYAPHPSy/hLAJKTLuY9z2IRevs15k+L/w=="];
+                               "U2FsdGVkX18fHWv7mMbyoNJLOvu5xkaTiDQox1MNmZuLzHH37qBzuPvwSL7/wB811kzgAE+BnKltoSPN4+GqxA=="];
 
 /* Input Box Object */
 const c_obj_inputUsername = document.querySelector( "#username" );
@@ -117,7 +117,7 @@ function fs_str_authData( l_obj_data ){
 
             /* IF passphrase decrypt to string same with empty string, continue the program */
             if ( CryptoJS.AES.decrypt( l_obj_data.accounts[i].passphrase,
-                 c_str_passphrase.toLowerCase() ).toString( CryptoJS.enc.Utf8 ) == "" ) {
+                 c_str_passphrase.toLowerCase() ).toString( CryptoJS.enc.Utf8 ) === "" ) {
 
                 continue; /* Continue Program & back to Looping if API have a data after it */
 
