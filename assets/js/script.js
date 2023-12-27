@@ -186,10 +186,11 @@ function fs_f_authAPI() {
     /* Get Passphrase from input Form */
     const c_str_passphrase = c_obj_inputPassphrase.value;
 
-    //const c_str_encryptedPassPhrase = CryptoJS.AES.encrypt( "text",
-    //                                                         c_str_passphrase )
-    //                                                         .toString(); //USING TO CREATING ENCRYPT DATA
-    //alert(c_str_encryptedPassPhrase); //GET THE STRING DATA
+    //let l_str_encryptedPassPhrase = CryptoJS.AES.encrypt( JSON.stringify( "text" ),
+    //                                c_str_passphrase )
+    //                                .toString(); //USING TO CREATING ENCRYPT DATA
+    //l_str_encryptedPassPhrase = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse( l_str_encryptedPassPhrase ));
+    //alert(l_str_encryptedPassPhrase); //GET THE STRING DATA
 
     /* Checking Paraphrase Data One By One with For Looping */
     for ( i of c_list_passPhraseList ) {
@@ -204,7 +205,7 @@ function fs_f_authAPI() {
 
             /* IF passphrase decrypt has data to be returned this program will running */
             /* Decrypt Paraphrase & put in a variable to be a parameter */
-            let l_str_apiURL = CryptoJS.AES.decrypt( i, c_str_passphrase )
+            let l_str_apiURL = CryptoJS.AES.decrypt( i, c_str_passphrase.toLowerCase() )
                                .toString( CryptoJS.enc.Utf8 );
 
             /* Calling fs_readAPI function and send data API URL as a Parameter on return */
