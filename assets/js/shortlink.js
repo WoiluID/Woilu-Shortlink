@@ -213,6 +213,9 @@ function fs_getShortenerLink() {
 /******************************************************************************/
 function fs_credentialChecker() {
 
+    //let l_str_passphrase = CryptoJS.enc.Base64.parse( s_str_passphrase )
+    //                       .toString( CryptoJS.enc.Utf8 );
+
     /* Checking API Key Data One By One with For Looping */
     for ( i of c_list_APIKey ) {
 
@@ -226,7 +229,7 @@ function fs_credentialChecker() {
 
             /* IF API KEY decrypt has data to be returned this program will running */
             /* Decrypt API KEY & put in a variable to be a parameter */
-            let l_str_APIKey = CryptoJS.AES.decrypt( i, s_str_passphrase )
+            let l_str_APIKey = CryptoJS.AES.decrypt( i, s_str_passphrase.toLowerCase() )
                                .toString( CryptoJS.enc.Utf8 );
 
             /* Calling fs_getShortLink function and send data API KEY as a Parameter on return */
