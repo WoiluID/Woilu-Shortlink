@@ -22,7 +22,8 @@
 
 /* Encrypt Data for Access The URL */
 const c_list_passPhraseList = ["U2FsdGVkX1/LmjxVaQFMSl5AY5Aysg0T+D3j6ajmtXUGPrlXdX0z/4BVtci1BqndjRXlxIv4ncdtiGVLRjHZCA==",
-                               "U2FsdGVkX1+8bqSyy/y6opml2r9y0jGoBkQ/oe1v/JKzHE/Rq5VwdJho1RYg6Nc1JBDooJNDtKTnFZ2yLoGCdA=="];
+                               "U2FsdGVkX1+8bqSyy/y6opml2r9y0jGoBkQ/oe1v/JKzHE/Rq5VwdJho1RYg6Nc1JBDooJNDtKTnFZ2yLoGCdA==",
+                               "U2FsdGVkX1/OIYpn65ihH8nEjyBSfJnLEtseG/7TPeETaIg/WZmYHmYAPHPSy/hLAJKTLuY9z2IRevs15k+L/w=="];
 
 /* Input Box Object */
 const c_obj_inputUsername = document.querySelector( "#username" );
@@ -106,10 +107,6 @@ function fs_str_authData( l_obj_data ){
     /* Hashing the Username & Password */
     const c_obj_hashUsername = CryptoJS.SHA1( c_str_username.toLowerCase() );
     const c_obj_hashPassword = CryptoJS.SHA1( c_str_password.toLowerCase() );
-    //const c_str_encryptedPassPhrase = CryptoJS.AES.encrypt( "text",
-    //                                                         c_str_passphrase)
-    //                                                         .toString(); USING TO CREATING ENCRYPT DATA
-    //alert(c_str_encryptedPassPhrase); GET THE STRING DATA
     
     /* Checking Data One by One with For Looping */
     for ( i = 0; i < Object.keys( l_obj_data.accounts ).length; i++ ) {
@@ -155,7 +152,7 @@ function fs_str_authData( l_obj_data ){
                                               l_obj_data.accounts[i].passphrase,
                                               c_str_passphrase )
                                               .toString( CryptoJS.enc.Utf8 );
-
+                
                 return l_str_decryptPassPhrase;
 
             }
@@ -187,7 +184,12 @@ function fs_str_authData( l_obj_data ){
 function fs_f_authAPI() {
 
     /* Get Passphrase from input Form */
-    const c_str_passphrase = document.getElementById( "passphrase" ).value;
+    const c_str_passphrase = c_obj_inputPassphrase.value;
+
+    //const c_str_encryptedPassPhrase = CryptoJS.AES.encrypt( "text",
+    //                                                         c_str_passphrase )
+    //                                                         .toString(); //USING TO CREATING ENCRYPT DATA
+    //alert(c_str_encryptedPassPhrase); //GET THE STRING DATA
 
     /* Checking Paraphrase Data One By One with For Looping */
     for ( i of c_list_passPhraseList ) {
