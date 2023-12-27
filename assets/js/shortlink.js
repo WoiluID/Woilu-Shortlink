@@ -69,8 +69,6 @@ function fs_getShortLink( l_str_APIKey ) {
         "allowDuplicates": false   /* Allow Duplicates */
     };
 
-    alert(l_str_APIKey);
-
     /* Fetch Function to Connect with API */
     fetch( "https://api.short.cm/links/public", {            /* API LINK/URL                                                    */
         method: "POST",                                      /* Method POST/GET                                                 */
