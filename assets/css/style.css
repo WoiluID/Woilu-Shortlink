@@ -1,0 +1,455 @@
+/******************************************************************************/
+/*  CASCADING STYLE SHEET ASSETS                                              */
+/*----------------------------------------------------------------------------*/
+/*  Copyright (C) 2023 MINEVERSAL                                             */
+/*  Licensed material of MINEVERSAL                                           */
+/*----------------------------------------------------------------------------*/
+/*  Object              : CSSA (CASCADING STYLE SHEET ASSETS)                 */
+/*  Outline             : CSSA (CASCADING STYLE SHEET ASSETS)                 */
+/*  File ID             : Woilu-CSSA-1                                        */
+/*----------------------------------------------------------------------------*/
+/*  Author              : Joe                                                 */
+/*  Revision Author     : -                                                   */
+/*  Created Time        : 2023/12/10 14:16 (UTC+07:00)                        */
+/*  Modification Time   : 2023/12/10 14:16 (UTC+07:00)                        */
+/*  Version             : 1 (Number of Version)                               */
+/*  Revision            : 0 (Number of Revision)                              */
+/******************************************************************************/
+
+/******************************************************************************/
+/*        ALL CONTENT                                                         */
+/******************************************************************************/
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: whitesmoke;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(120,120,121,1) 0%, rgba(136,136,136,1) 100%);
+    border-radius: 10px;
+}
+
+:root {
+    --color-red: #ea4335;
+    --color-blue: #4285f4;
+    --color-yellow: #fbbc05;
+    --color-green: #34a853;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/******************************************************************************/
+/*        LOGIN LAYOUT                                                        */
+/******************************************************************************/
+
+.background {
+    background: url('/assets/images/background.jpg') no-repeat fixed center center;
+    background-size: cover;
+}
+
+.logo {
+    height: auto;
+    max-width: 250px;
+    margin: 75px auto 75px auto;
+    text-align: center;
+    display: block;
+}
+
+.login-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid var(--color-blue);
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+/* Style the input container */
+.input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.form-icon {
+    padding: 10px;
+    background: var(--color-blue);
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    border-radius: .5rem 0 0 .5rem;
+    line-height: inherit;
+}
+
+/* Style the input fields */
+.input-field {
+    width: 100%;
+    border-radius: 0 .5rem .5rem 0;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+.input-field:focus {
+    border: 2px solid var(--color-blue);
+}
+
+/******************************************************************************/
+/*        SUBMIT BUTTON                                                       */
+/******************************************************************************/
+/* Set a style for the submit button */
+.btn {
+    background-color: var(--color-blue);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: .5rem;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+/******************************************************************************/
+/*        SHORTLINK LAYOUT                                                    */
+/******************************************************************************/
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    height: 60px;
+    background-color: #F2F2F2;
+}
+
+.navbar {
+    height: 100%;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar .right-header {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+}
+
+.navbar .left-header {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+}
+
+.navbar .left-header li {
+    margin-right: 15px;
+}
+
+.navbar .right-header li {
+    margin-left: 15px;
+}
+
+.navbar ul li a {
+    color: black;
+}
+
+.circle-shadow {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-shadow:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.back-icon,
+.user-icon span {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.user-icon span {
+    color: white;
+}
+
+.user-icon {
+    background-color: var(--color-red);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* Content */
+.content-section {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.logo-img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.link-bar {
+    background: #FFFFFF;
+    border: 1px solid lightgray;
+    width: 600px;
+    height: 45px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.link-bar:hover {
+    box-shadow: 0px 0px 4px 0px #B5B5B5;
+}
+
+.link-bar i {
+    font-size: 18px;
+    color: gray;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.link-bar i:hover, .link-bar i:focus {
+    color: var(--color-blue);
+}
+
+.link-bar input {
+    flex-grow: 1;
+    height: 30px;
+    margin-right: 15px;
+    font-size: 16px;
+    border: none;
+}
+
+.link-bar input:focus {
+    outline: none;
+}
+
+.link-btns {
+    margin-top: 20px;
+}
+
+.link-btns button {
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: black;
+    background-color: #F2F3F4;
+}
+
+.link-btns button:hover, .link-btns button:focus {
+    border: 2px solid var(--color-blue);
+    background-color: var(--color-blue);
+    color: white;
+    cursor: pointer;
+}
+
+.original-btn {
+    width: 120px;
+}
+
+.short-btn {
+    width: 140px;
+}
+
+.language {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.language p a {
+    color: blue;
+}
+
+.language p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #F2F2F2;
+    height: 40px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.upper-footer {
+    height: 50%;
+    border-bottom: 1px solid lightgray;
+}
+
+.upper-footer p {
+    color: gray;
+    font-size: 14px;
+}
+
+.lower-footer {
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lower-footer ul li a {
+    font-size: 14px;
+    color: gray;
+}
+
+.lower-footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.lower-left-footer {
+    display: flex;
+}
+
+.lower-left-footer li {
+    margin-right: 15px;
+}
+
+
+.lower-right-footer {
+    display: flex;
+}
+
+.lower-right-footer li {
+    margin-left: 15px;
+}
+
+/* Mobile and Tablet */
+@media only screen and (max-width: 650px) {
+    /* Navbar */
+    .navbar ul {
+        font-size: 10px;
+    }
+
+    .back-icon,
+    .user-icon span {
+        font-size: 14px;
+    }
+
+    .circle-shadow {
+        height: 30px;
+        width: 30px;
+    }
+
+    /* Logo */
+    .logo-img {
+        width: 200px;
+    }
+
+    /* Link Bar */
+    .link-bar {
+        width: 90%;
+        height: 35px;
+    }
+
+    .link-bar i {
+        font-size: 14px;
+    }
+
+    /* Buttons */
+    .link-btns button {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .original-btn {
+        width: 100px;
+    }
+    
+    .short-btn {
+        width: 120px;
+    }
+
+    /* Language */
+    .language {
+        font-size: 12px;
+    }
+
+    /* Footer */
+    footer {
+        height: 80px;
+    }
+
+    .upper-footer {
+        height: 50px;
+    }
+
+    .lower-footer {
+        height: 80px;
+        flex-direction: column;
+    }
+
+    .lower-left-footer {
+        flex-wrap: wrap;
+    }
+}
+
+/******** END OF FILE *********************************************************/
