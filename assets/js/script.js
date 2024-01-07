@@ -30,6 +30,11 @@ const c_obj_inputUsername = document.querySelector( "#username" );
 const c_obj_inputPassword = document.querySelector( "#password" );
 const c_obj_inputPassphrase = document.querySelector( "#passphrase" );
 
+/* Session Variable */
+let s_tf_sessionStatus;                       /* Session Status               */
+let s_str_passphrase;                         /* Passphrase                   */
+let s_str_decryptLink;                        /* Decrypt Link                 */
+
 /******************************************************************************/
 /*  Function:                                                                 */
 /*      fs_readAPI                                                            */
@@ -125,18 +130,26 @@ function fs_str_authData( l_obj_data ){
 
                 /* IF passphrase decrypt has data to be returned this program will running */
 
+                /* Decrypt Paraphrase & return it back */
+                let l_str_decryptPassPhrase = CryptoJS.AES.decrypt( 
+                    l_obj_data.accounts[i].passphrase,
+                    c_str_passphrase )
+                    .toString( CryptoJS.enc.Utf8 );
+
                 /* Credentials Session & Cookies */
 
                 /* Local Storage */
                 //localStorage.setItem( "username", c_str_username );
                 //localStorage.setItem( "password", c_str_password );
                 localStorage.setItem( "passphrase", c_str_passphrase );
+                localStorage.setItem( "decrypt", l_str_decryptPassPhrase );
                 localStorage.setItem( "session", true );
 
                 /* Session Storage */
                 //sessionStorage.setItem( "username", c_str_username );
                 //sessionStorage.setItem( "password", c_str_password );
                 sessionStorage.setItem( "passphrase", c_str_passphrase );
+                sessionStorage.setItem( "decrypt", l_str_decryptPassPhrase );
                 sessionStorage.setItem( "session", true );
 
                 /* Cookies */
@@ -146,12 +159,6 @@ function fs_str_authData( l_obj_data ){
 
                 /* Welcome Alert */
                 alert( "Login Success!\nWelcome " + l_obj_data.accounts[i].name );
-
-                /* Decrypt Paraphrase & return it back */
-                let l_str_decryptPassPhrase = CryptoJS.AES.decrypt( 
-                                              l_obj_data.accounts[i].passphrase,
-                                              c_str_passphrase )
-                                              .toString( CryptoJS.enc.Utf8 );
                 
                 return l_str_decryptPassPhrase;
 
@@ -216,6 +223,43 @@ function fs_f_authAPI() {
     }
 
     return alert( "Wrong Password Phrase!" ) /* Return this if Data wasn't found on the list */
+
+}
+
+/******************************************************************************/
+/*  Function:                                                                 */
+/*      fs_initSession                                                        */
+/*  Outline:                                                                  */
+/*      Initialize Session from the previous page                             */
+/*  Parameter:                                                                */
+/*      None                                                                  */
+/*  Return Value:                                                             */
+/*      None                                                                  */
+/*  Function Explanation:                                                     */
+/*      Initialize Session from the previous page                             */
+/*  Note:                                                                     */
+/*      None                                                                  */
+/*  Traceability Reference ID:                                                */
+/*      None                                                                  */
+/******************************************************************************/
+function fs_initSession() {
+
+    /* Checking The Session */
+    /* For Session Storage */
+    s_tf_sessionStatus = sessionStorage.getItem( "session" ) === null ?  /* Session Status */
+                         localStorage.getItem( "session" )            :
+                         sessionStorage.getItem( "session" );
+    s_str_passphrase = sessionStorage.getItem( "passphrase" ) === null ? /* Passphrase     */
+                       localStorage.getItem( "passphrase" )            :
+                       sessionStorage.getItem( "passphrase" );
+    s_str_decryptLink = sessionStorage.getItem( "decrypt" ) === null ?   /* Decrypt Link   */
+                       localStorage.getItem( "decrypt" )             :
+                       sessionStorage.getItem( "decrypt" );
+
+    /* For Local Storage */
+    s_tf_sessionStatus = s_tf_sessionStatus === null ? false : s_tf_sessionStatus; /* Session Status */
+    s_str_passphrase = s_str_passphrase === null ? "" : s_str_passphrase;          /* Passphrase     */
+    s_str_decryptLink = s_str_decryptLink === null ? "" : s_str_decryptLink;       /* Decrypt Link   */
 
 }
 
@@ -335,6 +379,33 @@ c_obj_inputPassphrase.addEventListener( "keyup", function( event ) {
     } else {
 
         /* Do Nothing */
+
+    }
+
+} );
+
+/******************************************************************************/
+/*                                                                            */
+/*  Function : WINDOW ONLOAD FUNCTION                                         */
+/*                                                                            */
+/*  Input    : LOAD                                                           */
+/*                                                                            */
+/*  Output   : SHOWING LOGIN PAGE | REDIRECT TO SHORTLINK PAGE                */
+/*                                                                            */
+/******************************************************************************/
+window.addEventListener( "load", ( event ) => {
+
+    fs_initSession(); // Initialize the Session
+
+    if ( ( s_tf_sessionStatus       )     /* If Session was True           */
+      && ( s_str_passphrase !== ""  )     /* Passphrase have a value       */
+      && ( s_str_decryptLink !== "" ) ) { /* and Decrypt Link have a value */
+
+        window.location.replace( s_str_decryptLink ); /* Go to Shortlink Page */
+
+    } else {
+
+        fs_modalAnimationOut(); /* Activate the Modal Form */
 
     }
 
