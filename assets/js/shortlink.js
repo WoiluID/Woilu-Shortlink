@@ -329,20 +329,34 @@ function fs_redirectToLogin() {
 /******************************************************************************/
 function fs_logOut() {
 
-    /* Session Storage Was Destroyed */
-    sessionStorage.removeItem( "session" );
-    sessionStorage.removeItem( "passphrase" );
-    sessionStorage.clear();
+    /* Alert Confirmation */
+    let l_tf_confirmation = confirm( "Are you sure want to logout?" );
 
-    /* Local Storage Was Destroyed */
-    localStorage.removeItem( "session" );
-    localStorage.removeItem( "passphrase" );
-    localStorage.clear();
+    /* IF Confirmation was True, Running this program */
+    if ( l_tf_confirmation ) {
 
-    /* Alert after user Logout */
-    alert( "You Success Logout" );
+        /* Session Storage Was Destroyed */
+        sessionStorage.removeItem( "session" );
+        sessionStorage.removeItem( "passphrase" );
+        sessionStorage.removeItem( "decrypt" );
+        sessionStorage.clear();
 
-    window.location.replace( "/" ); /* Go To Login Page */
+        /* Local Storage Was Destroyed */
+        localStorage.removeItem( "session" );
+        localStorage.removeItem( "passphrase" );
+        localStorage.removeItem( "decrypt" );
+        localStorage.clear();
+
+        /* Alert after user Logout */
+        alert( "You Success Logout" );
+
+        window.location.replace( "/" ); /* Go To Login Page */
+
+    } else {
+            
+        /* Do Nothing */
+
+    }
 
 }
 
