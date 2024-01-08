@@ -405,7 +405,7 @@ window.addEventListener( "load", ( event ) => {
 
     } else {
 
-        fs_modalAnimationOut(); /* Activate the Modal Form */
+        /* Do Nothing */
 
     }
 
